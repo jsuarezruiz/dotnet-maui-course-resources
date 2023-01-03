@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WeatherApp.Views.Templates.WeatherItemTemplate">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="TextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Margin" Value="0, 6" />
+            </Style>
+
+            <Style x:Key="IconStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="WidthRequest" Value="150" />
+            </Style>
+
+            <Style x:Key="WeatherTextStyle" TargetType="Label"
+                   BasedOn="{StaticResource TextStyle}">
+                <Setter Property="MaxLines" Value="1" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid 
+            WidthRequest="150"
+            Margin="6, 0, 6, 24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="0"
+                Text="{Binding DisplayDate}"
+                Style="{StaticResource TextStyle}"/>
+            <Image 
+                Grid.Row="1"
+                Source="{Binding Icon, Converter={StaticResource IconConverter}}"
+                Style="{StaticResource IconStyle}"/>
+            <Label
+                Grid.Row="2"
+                Text="{Binding DisplayTemp}"
+                Style="{StaticResource WeatherTextStyle}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

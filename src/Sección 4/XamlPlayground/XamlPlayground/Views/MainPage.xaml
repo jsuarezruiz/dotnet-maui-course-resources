@@ -1,0 +1,17 @@
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:XamlPlayground"
+    x:Class="XamlPlayground.MainPage"
+	Padding="5,0"
+	Title="XAML Playground">
+	<ListView ItemsSource="{x:Static local:PageDataViewModel.All}"
+			  ItemSelected="OnListViewItemSelected">
+		<ListView.ItemTemplate>
+			<DataTemplate>
+				<TextCell Text="{Binding Title}"
+                          Detail="{Binding Description}" />
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+</ContentPage>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MonkeysApp.Views.MonkeyDetailsView"
+    xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+    Title="{Binding Monkey.Name}">
+    <ScrollView>
+        <Grid 
+            RowDefinitions="Auto,Auto,*">
+            <BoxView
+                BackgroundColor="{StaticResource Primary}"
+                Grid.RowSpan="2"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+            <Border 
+                StrokeShape="RoundRectangle 80"
+                Stroke="White"
+                StrokeThickness="6"
+                HeightRequest="160"
+                WidthRequest="160"
+                Margin="0,8,0,0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Image 
+                    Aspect="AspectFill"
+                    HeightRequest="160"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Source="{Binding Monkey.Image}"
+                    WidthRequest="160"/>
+            </Border>
+            <Label 
+                Grid.Row="1"
+                TextColor="White"
+                FontAttributes="Bold"
+                Text="{Binding Monkey.Name}" 
+                HorizontalOptions="Center"
+                Margin="0,0,0,8"/>
+            <VerticalStackLayout 
+                Grid.Row="2" 
+                Padding="10" 
+                Spacing="10">
+                <maps:Map
+                    ItemsSource="{Binding Locations}">
+                    <maps:Map.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean">
+                            <On Platform="iOS, Android">true</On>
+                            <On Platform="Windows">false</On>
+                        </OnPlatform>
+                    </maps:Map.IsVisible>
+                    <maps:Map.ItemTemplate>
+                        <DataTemplate>
+                            <maps:Pin 
+                                Location="{Binding Location}"
+                                Address="{Binding Address}"
+                                Label="{Binding Description}" />
+                        </DataTemplate>
+                    </maps:Map.ItemTemplate>
+                </maps:Map>
+                <Label 
+                    Text="{Binding Monkey.Details}" />
+                <Label 
+                    Text="{Binding Monkey.Location, StringFormat='Location: {0}'}" />
+                <Label 
+                    Text="{Binding Monkey.Population, StringFormat='Population: {0}'}" />
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
