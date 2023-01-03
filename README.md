@@ -113,3 +113,25 @@
 * 85. Mostrar alertas y diálogos
 * 86. Añadiendo diálogos a nuestra aplicación ToDo
 * 87. Consejo de Javier - Mezcla de conocimientos
+
+
+**Sección 10: Gestión de datos locales con SQLite**
+
+* 88. ChatApp - Aplicación de chat con UI elegante
+* 89. Herramientas y consejos para buscar inspiración
+* 90. El control Border
+* 91. Dibujando y recortando figuras
+* 92. Sombra aquí sombra allá
+* 93. Animaciones
+* 94. Gestos
+* 95. Localización en .NET MAUI
+* 96. Reto - Crear UI elegante de ChatApp
+* 97. Resolución del reto - ChatApp
+* 98. Consejo de Javier - Revisa tus metas
+
+**Sección 11: Próximos pasos**
+
+* 99. Sigue aprendiendo
+* 100. Publica tus aplicaciones
+* 101. Contenido de interés
+* 102. Enhorabuena y gracias por llegar hasta aquí!
