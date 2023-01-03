@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="GesturesPlayground.TapInsideFrameXaml">
+    <StackLayout>
+        <Image 
+            Source="tapped.jpg"
+            HeightRequest="150"
+            WidthRequest="150">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer 
+	    		    Command="{Binding TapCommand}" 
+	    		    CommandParameter="Image1" />
+            </Image.GestureRecognizers>
+        </Image>
+        <Border 
+            Stroke="Red"
+            BackgroundColor="Transparent"
+            Padding="20, 20"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer 
+        		    Command="{Binding TapCommand}" 
+        		    CommandParameter="Frame1" />
+            </Border.GestureRecognizers>
+            <Label 
+                Text="Tap inside Border (or on the monkey!)" 
+                FontSize="Large" />
+        </Border>
+        <Label 
+            x:Name="label"
+            Text="{Binding NumberOfTapsTapped}"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand" />
+    </StackLayout>
+</ContentPage>
