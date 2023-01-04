@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MonkeysApp.Views.MonkeysView"
+    xmlns:viewmodels="clr-namespace:MonkeysApp.ViewModels"
+    Title="Listado de monos">
+    <Grid>
+        <CollectionView
+            ItemsSource="{Binding Monkeys}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        Padding="10" 
+                        HorizontalOptions="Fill">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer         
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MonkeysViewModel}}, Path=GoToDetailsCommand}"
+                                CommandParameter="{Binding .}"/>
+                        </Grid.GestureRecognizers>
+                        <Frame 
+                            HeightRequest="125"
+                            Padding="0">
+                            <Grid 
+                                Padding="0" 
+                                ColumnDefinitions="125,*">
+                                <Image
+                                    Aspect="AspectFill"
+                                    HeightRequest="125"
+                                    WidthRequest="125"
+                                    Source="{Binding Image}" />
+                                <VerticalStackLayout
+                                    VerticalOptions="Center"
+                                    Grid.Column="1"
+                                    Padding="10">
+                                    <Label 
+                                        FontSize="Medium"
+                                        Text="{Binding Name}" />
+                                    <Label 
+                                        Text="{Binding Location}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

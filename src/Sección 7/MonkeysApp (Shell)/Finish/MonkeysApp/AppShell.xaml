@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MonkeysApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MonkeysApp.Views"
+    Shell.FlyoutBehavior="Flyout">
+
+    <FlyoutItem 
+        Title="Inicio">
+        <Tab 
+            Title="Listado">
+            <ShellContent
+                Title="Listado"
+                ContentTemplate="{DataTemplate views:MonkeysView}"
+                Route="List" />
+        </Tab>
+        <Tab 
+            Title="Mapa">
+            <ShellContent
+                Title="Mapa"
+                ContentTemplate="{DataTemplate views:MonkeysMapView}"
+                Route="Map" />
+        </Tab>
+    </FlyoutItem>
+    
+    <FlyoutItem 
+        Title="Acerca de">
+        <ShellContent
+            Title="About"
+            ContentTemplate="{DataTemplate views:AboutView}"
+            Route="About" />
+    </FlyoutItem>
+
+</Shell>
