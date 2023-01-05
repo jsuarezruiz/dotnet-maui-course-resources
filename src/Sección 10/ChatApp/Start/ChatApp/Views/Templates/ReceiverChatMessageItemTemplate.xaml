@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ChatApp.Views.Templates.ReceiverChatMessageItemTemplate">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="MessageColor">#EDEEF7</Color>
+
+            <!-- TODO: AÑADE LOS ESTILOS NECESARIOS AQUÍ -->
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid
+            ColumnDefinitions="Auto, *">
+            <Label
+                Text="{Binding Time}"/>
+            <Grid 
+                Grid.Column="1">
+                <Label 
+                    Text="{Binding Text}" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

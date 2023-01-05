@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ChatApp.Views.DetailView"   
+    xmlns:templates="clr-namespace:ChatApp.Views.Templates"
+    xmlns:viewmodel="clr-namespace:ChatApp.ViewModels">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <DataTemplate x:Key="SenderMessageItemTemplate">
+                <templates:SenderChatMessageItemTemplate />
+            </DataTemplate>
+
+            <DataTemplate x:Key="ReceiverMessageItemTemplate">
+                <templates:ReceiverChatMessageItemTemplate />
+            </DataTemplate>
+
+            <templates:MessageDataTemplateSelector 
+                x:Key="MessageDataTemplateSelector"             
+                SenderMessageTemplate="{StaticResource SenderMessageItemTemplate}"    
+                ReceiverMessageTemplate="{StaticResource ReceiverMessageItemTemplate}"/>
+
+            <Style x:Key="NavigationButtonContainerStyle" TargetType="Grid">
+                <Setter Property="Margin" Value="24, 12" />
+                <Setter Property="VerticalOptions" Value="Start" />
+            </Style>
+
+            <Color x:Key="NavigationButtonColor">#A2A4D6</Color>
+
+            <Style x:Key="ButtonsContainerStyle" TargetType="StackLayout">
+                <Setter Property="HeightRequest" Value="120" />
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="Margin" Value="24, 12" />
+            </Style>
+
+            <Color x:Key="CircularButtonEllipseColor">#868BCB</Color>
+
+            <Style x:Key="CircularButtonImageStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            
+            <Style x:Key="ChatCollectionStyle" TargetType="CollectionView">
+                <Setter Property="HeightRequest" Value="400" />
+                <Setter Property="Margin" Value="18, 32, 18, 0" />
+            </Style>
+
+            <Color x:Key="ChatEntryBackgroundColor">#F7F7F8</Color>
+
+            <!-- TODO: AÑADE LOS ESTILOS NECESARIOS AQUÍ -->
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid
+                RowDefinitions="Auto, *">
+                <Grid 
+                    Grid.Row="0"
+                    RowDefinitions="Auto, 150">
+                    <Grid 
+                        ColumnDefinitions="Auto, *"
+                        Style="{StaticResource NavigationButtonContainerStyle}">
+                        <Label
+                            Text="Back">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DetailViewModel}}, Path=GoBackCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label                    
+                            Grid.Column="1"
+                            Text="Search"
+                            HorizontalOptions="End"/>
+                    </Grid>
+                    <Grid 
+                        Grid.Row="1"
+                        ColumnDefinitions="*, Auto">
+                        <Label
+                            Text="{Binding User.Name}" />
+                        <StackLayout 
+                            Grid.Column="1" 
+                            Style="{StaticResource ButtonsContainerStyle}">
+                            <Grid>
+                                <Image   
+                                    Source="call.png"
+                                    Style="{StaticResource CircularButtonImageStyle}"/>
+                            </Grid>
+                            <Grid>
+                                <Image   
+                                    Source="record.png"
+                                    Style="{StaticResource CircularButtonImageStyle}"/>
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+                <Grid 
+                    Grid.Row="1">
+                    <Grid
+                        RowDefinitions="*, Auto">
+                        <Grid>
+                            <CollectionView 
+                                ItemsSource="{Binding Messages}"
+                                ItemTemplate="{StaticResource MessageDataTemplateSelector}"
+                                Style="{StaticResource ChatCollectionStyle}" />
+                        </Grid>
+                        <Grid       
+                            Grid.Row="1"
+                            ColumnDefinitions="*, 32">
+                            <Entry
+                                Placeholder="Type your message..."/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

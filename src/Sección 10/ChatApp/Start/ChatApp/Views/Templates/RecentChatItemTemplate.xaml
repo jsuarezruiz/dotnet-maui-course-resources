@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ChatApp.Views.Templates.RecentChatItemTemplate"
+    xmlns:viewmodel="clr-namespace:ChatApp.ViewModels">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="RecentImageContainerStyle" TargetType="Grid">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="72" />
+                <Setter Property="WidthRequest" Value="72" />
+            </Style>
+
+            <Color x:Key="TimeColor">#B2ACBE</Color>
+
+            <!-- TODO: AÑADE LOS ESTILOS NECESARIOS AQUÍ -->
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid
+          ColumnDefinitions="Auto, *"
+          RowSpacing="0"
+          Margin="12, 24">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer                
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomeViewModel}}, Path=GoToDetailsCommand}"      
+                    CommandParameter="{Binding .}"/>
+            </Grid.GestureRecognizers>
+            <Grid
+                Style="{StaticResource RecentImageContainerStyle}">
+                <!-- TODO: AÑADE EL BORDE A LA IMAGEN -->
+                <Image
+                    Source="{Binding Sender.Image}"/>
+            </Grid>
+            <Grid
+                Grid.Column="1"   
+                ColumnDefinitions="*, Auto">
+                <StackLayout>
+                    <Label        
+                        Text="{Binding Sender.Name}"/>
+                    <Label         
+                        Text="{Binding Text}"/>
+                </StackLayout>
+                <Label 
+                    Grid.Column="1"
+                    Text="{Binding Time}"/>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
