@@ -1,5 +1,7 @@
 ![.NET MAUI Course](images/course-banner.png)
 
+Curso de .NET MAUI donde creando aplicaciones como una aplicación de gestión de tareas, aplicación del tiempo, calculadora y muchas más aprenderemos todos los conceptos básicos del desarrollo de aplicaciones multiplataforma como la creación de la UI, gestión de la apariencia o el navegar entre pantallas hasta conceptos relacionados necesarios como la gestión de conexiones con APIs o de base de datos SQLite.
+
 **Sección 1: Introducción a el curso**
 
 * 1. Introducción al desarrollo multiplataforma con .NET MAUI
